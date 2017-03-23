@@ -32,6 +32,8 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
         }
     }
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
+    logger('grails.app.init', DEBUG, ['STDOUT'], false)
+    logger('com.nearsoft', DEBUG, ['STDOUT'], false)
     root(ERROR, ['STDOUT', 'FULL_STACKTRACE'])
 }
 else {

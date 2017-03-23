@@ -24,6 +24,10 @@ endpoints:
     jmx:
         enabled: true
 
+server:
+  port: 8090
+  contextPath: '/test'
+
 ---
 grails:
     mime:
