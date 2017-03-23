@@ -16,12 +16,12 @@
         </div>
         <div class="panel-body">
             <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+            <div class="alert alert-info" role="alert">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${this.author}">
-            <ul class="errors" role="alert">
+            <ul class="alert alert-danger" role="alert">
                 <g:eachError bean="${this.author}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+                <li class="alert-link" <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                 </g:eachError>
             </ul>
             </g:hasErrors>

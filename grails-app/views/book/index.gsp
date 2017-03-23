@@ -29,7 +29,7 @@
         <div id="list-book" class="table-responsive">
             <h1></h1>
             <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
+                <div class="alert alert-info" role="alert">${flash.message}</div>
             </g:if>
 
             <table class="table table-striped table-bordered dataTable">
@@ -49,7 +49,7 @@
                 </thead>
                 <tbody>
                 <g:each in="${bookList}" status="i" var="book">
-                    <tr>
+                    <tr class="${(i%2) ? 'odd': 'even'}">
                         <td><f:display property="title" bean="${book}"/></td>
                         <td><f:display property="author" bean="${book}"/></td>
                         <td><f:display property="pubDate" bean="${book}"/></td>

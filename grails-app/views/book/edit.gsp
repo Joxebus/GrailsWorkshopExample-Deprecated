@@ -17,10 +17,10 @@
         </div>
         <div class="panel-body">
             <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+            <div class="alert alert-info" role="alert">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${this.book}">
-            <ul class="errors" role="alert">
+            <ul class="alert alert-danger" role="alert">
                 <g:eachError bean="${this.book}" var="error">
                 <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                 </g:eachError>
@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><g:message code="book.form.author" default="Author"/></label>
                             <div class="col-sm-8">
-                            <g:select from="${com.nearsoft.Author.list()}" name="author.id" optionKey="id" class="form-control"/>
+                            <g:select from="${com.nearsoft.Author.list()}" name="author.id" optionKey="id" value="${this.book.author.id}" class="form-control"/>
                             </div>
                         </div>
                     </fieldset>

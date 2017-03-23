@@ -16,7 +16,7 @@
         </div>
         <div class="panel-body">
             <g:if test="\${flash.message}">
-            <div class="message" role="status">\${flash.message}</div>
+            <div class="alert alert-info" role="alert">\${flash.message}</div>
             </g:if>
             <f:display bean="${propertyName}" />
             <g:form resource="\${this.${propertyName}}" method="DELETE">
