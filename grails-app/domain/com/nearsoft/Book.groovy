@@ -12,10 +12,9 @@ class Book {
 
 
     static constraints = {
-        title blank:false
+        title blank:false, sqlType:'text'
         link blank:false, sqlType:'text'
         description sqlType:'text', widget:'textarea'
-        author blank:false, nullable:false
         dateCreated display:false
     }
 

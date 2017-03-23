@@ -14,7 +14,7 @@ class BookController {
     }
 
     def show(Book book) {
-        respond book
+        respond book, model:[bookCount: Book.count()]
     }
 
     def create() {
@@ -29,11 +29,15 @@ class BookController {
             return
         }
 
+        book.pubDate =  book.pubDate ?: new Date()
+        book.validate()
         if (book.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond book.errors, view:'create'
             return
         }
+
+
 
         book.save flush:true
 

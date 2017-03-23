@@ -14,6 +14,7 @@ class BootStrap {
             log.debug("Start loading Books")
             use(FeedReader){
                 books = "http://feeds.feedburner.com/nybooks".readBookFeed()
+                // books = "https://www.bookbrowse.com/rss/newest_reader_reviews.rss".readBookFeed()
                 for(bookProperties in books){
                     log.debug("Saving book $bookProperties")
                     def book = new Book(

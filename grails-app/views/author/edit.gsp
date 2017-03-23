@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="main" />
+        <meta name="layout" content="bootstrap" />
         <g:set var="entityName" value="${message(code: 'author.label', default: 'Author')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#edit-author" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
+    <div class="content-box-large">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h2>
+                    <g:message code="default.edit.label" args="[entityName]" />
+                </h2>
+            </div>
         </div>
-        <div id="edit-author" class="content scaffold-edit" role="main">
-            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+        <div class="panel-body">
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -26,15 +25,31 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.author}" method="PUT">
+            <g:form resource="${this.author}" method="PUT" class="form-horizontal">
                 <g:hiddenField name="version" value="${this.author?.version}" />
-                <fieldset class="form">
-                    <f:all bean="author"/>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"><g:message code="book.form.title" default="Title"/></label>
+                        <div class="col-sm-8">
+                            <g:textField name="name" value="${this.author.name}" class="form-control"/>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="col-sm-8">
+                            <f:field property="books" bean="${this.author}"/>
+                        </div>
+
+                    </div>
                 </fieldset>
+                <br/>
                 <fieldset class="buttons">
-                    <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                    <input type="submit" class="btn btn-primary" value="${message(code: 'default.button.update.label', default: 'Update')}" />
                 </fieldset>
             </g:form>
+        </div>
         </div>
     </body>
 </html>
